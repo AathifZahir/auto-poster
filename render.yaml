@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: instagram-auto-poster
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: DROPBOX_ACCESS_TOKEN
+        sync: false
+      - key: DROPBOX_REFRESH_TOKEN
+        sync: false
+      - key: DROPBOX_APP_KEY
+        sync: false
+      - key: DROPBOX_APP_SECRET
+        sync: false
+      - key: IG_USERNAME
+        sync: false
+      - key: IG_PASSWORD
+        sync: false
+      - key: POSTING_INTERVAL_HOURS
+        value: 6
+      - key: MAX_IMAGES
+        value: 72
